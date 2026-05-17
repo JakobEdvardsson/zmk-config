@@ -1,0 +1,52 @@
+#include <physical_layouts.dtsi>
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+    chosen {
+        zmk,physical-layout = &layout;
+    };
+
+    kscan: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+
+        row-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+
+        col-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>,
+                    <&pro_micro 5 GPIO_ACTIVE_HIGH>,
+                    <&pro_micro 6 GPIO_ACTIVE_HIGH>;
+    };
+
+    transform: matrix_transform {
+        compatible = "zmk,matrix-transform";
+        rows = <3>;
+        columns = <3>;
+
+        map = <
+            RC(0, 0) RC(0, 1) RC(0, 2)
+            RC(1, 0) RC(1, 1) RC(1, 2)
+            RC(2, 0) RC(2, 1) RC(2, 2)
+        >;
+    };
+
+    layout: layout {
+        compatible = "zmk,physical-layout";
+        display-name = "Ortho 3x3";
+        transform = <&transform>;
+        kscan = <&kscan>;
+
+        keys  //                     w   h    x    y     rot    rx    ry
+            = <&key_physical_attrs 100 100    0    0       0     0     0>
+            , <&key_physical_attrs 100 100  100    0       0     0     0>
+            , <&key_physical_attrs 100 100  200    0       0     0     0>
+            , <&key_physical_attrs 100 100    0  100       0     0     0>
+            , <&key_physical_attrs 100 100  100  100       0     0     0>
+            , <&key_physical_attrs 100 100  200  100       0     0     0>
+            , <&key_physical_attrs 100 100    0  200       0     0     0>
+            , <&key_physical_attrs 100 100  100  200       0     0     0>
+            , <&key_physical_attrs 100 100  200  200       0     0     0>
+            ;
+    };
+};
