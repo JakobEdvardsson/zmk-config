@@ -1,5 +1,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
 
 / {
     keymap {
@@ -16,8 +17,8 @@
         system_layer {
             bindings = <
                 &trans       &trans       &trans
-                &sys_reset   &bootloader  &trans
-                &trans       &trans       &trans
+                &sys_reset   &bootloader  &bt BT_CLR
+                &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2
             >;
         };
     };
