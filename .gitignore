@@ -1,0 +1,6 @@
+# Local ZMK west workspace / firmware sources
+.zmk/
+
+# Local build output
+build/
+*.uf2
