@@ -89,6 +89,15 @@
             bindings = <&kp SE_LPRN &kp SE_RPRN &kp SPACE &kp SE_EQL
                         &kp SE_GRTR &kp SPACE &kp SE_LCBR &kp SE_RCBR>;
         };
+
+        alt_altgr: alt_altgr {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press &kp LALT &kp RALT>,
+                <&macro_pause_for_release>,
+                <&macro_release &kp RALT &kp LALT>;
+        };
     };
 
     combos {
@@ -157,7 +166,7 @@
             bindings = <
     &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE &kp C_BRI_DN &kp C_BRI_UP       &msc SCRL_UP   &kp HOME &kp END  &caps_word &kp PG_UP
     &kp LGUI     &kp LALT     &kp LCTRL  &kp LSHIFT   &kp INSERT         &msc SCRL_DOWN &kp LEFT &kp DOWN &kp UP     &kp RIGHT
-    &kp C_PREV   &kp C_NEXT   &kp C_PP   &kp F9       &kp PSCRN          &kp LC(N0) &kp LC(SE_MINS) &kp LC(SE_PLUS) &trans &kp PG_DN
+    &kp C_PREV   &kp C_NEXT   &kp C_PP   &alt_altgr   &kp PSCRN          &kp LC(N0) &kp LC(SE_MINS) &kp LC(SE_PLUS) &trans &kp PG_DN
                               &trans      &trans         &trans           &trans &trans &trans
             >;
         };
