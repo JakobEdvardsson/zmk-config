@@ -19,17 +19,17 @@
 #
 ---
 include:
-  # Both halves are nice!nano v1 boards (UF2 bootloader reports "nice!nano").
-  # The v1 target uses the battery voltage-divider sensor; the v2 target would
-  # read VDDH instead and report the battery level incorrectly.
+  # Both controllers are the same hardware revision; use the v2 target for both.
+  # The v1 bootloader reporting "nice!nano" does not mean the battery circuit is
+  # v1-style — the left's v1 build proved that by reading 0%.
   #
   # Left half is the split central — build it with ZMK Studio support.
-  - board: nice_nano
+  - board: nice_nano_v2
     shield: skeletyl_left
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
-  - board: nice_nano
+  - board: nice_nano_v2
     shield: skeletyl_right
   # Flash to either half to clear stored Bluetooth bonds and settings.
-  - board: nice_nano
+  - board: nice_nano_v2
     shield: settings_reset
