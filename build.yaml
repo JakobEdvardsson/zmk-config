@@ -26,3 +26,6 @@ include:
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
   - board: nice_nano_v2
     shield: skeletyl_right
+  # Flash to both halves to clear stored Bluetooth bonds and settings.
+  - board: nice_nano_v2
+    shield: settings_reset
